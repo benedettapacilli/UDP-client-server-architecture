@@ -6,7 +6,7 @@ server_address = ('localhost', 10000)
 message = input("Enter your message to the server: \n")
 
 try:
-    print('Sending "%s..."' % message)
+    print('Sending "%s"...' % message)
     time.sleep(2)
     sent = socket.sendto(message.encode(), server_address)
 
