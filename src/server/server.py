@@ -1,17 +1,36 @@
 import socket as sk
-import time
+import server_library as sl
+import threading
 
-socket = sk.socket(sk.AF_INET, sk.SOCK_DGRAM)
-server_address = ('localhost', 10000)
-print(f'Starting up on {server_address[0]}, port {server_address[1]}')
-socket.bind(server_address)
+BUFFERSIZE = 4096
+
+SOCKET = sk.socket(sk.AF_INET, sk.SOCK_DGRAM)
+SERVER_ADDRESS = ('localhost', 10000)
+
+def handler(op, address):
+    while True:
+        if op == 'list':
+            sl.list(SOCKET, address, op)
+        elif op.startswith('get'):
+            sl.send(SOCKET, address, op)
+        elif op.startswith('put'):
+            sl.receive(SOCKET, op)
+        elif op == 'exit':
+            sl.end_process(SOCKET)
+
+        print('')
+
+print(f'Starting up on {SERVER_ADDRESS[0]}, port {SERVER_ADDRESS[1]}')
+SOCKET.bind(SERVER_ADDRESS)
 print('Now listening...\n')
 
 while True:
-    print('Waiting to receive message...\n')
-    data, address = socket.recvfrom(4096)
+    print('\nWaiting to receive message...\n')
+    data, address = SOCKET.recvfrom(BUFFERSIZE)
 
-    print(f"Received %s bytes from {(len(data), address)}")
-    message = data.decode('utf8')
+    print(f"Received {len(data)} bytes from {address}")
+    op = data.decode('utf8')
 
-    
+    thread = threading.Thread(target=handler, args=(op, address))
+    thread.start()
+    thread.join()
