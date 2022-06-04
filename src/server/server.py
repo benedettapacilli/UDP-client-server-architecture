@@ -6,6 +6,7 @@ BUFFERSIZE = 4096
 
 SOCKET = sk.socket(sk.AF_INET, sk.SOCK_DGRAM)
 SERVER_ADDRESS = ('localhost', 10000)
+print(f'Starting up on {SERVER_ADDRESS[0]}, port {SERVER_ADDRESS[1]}')
 
 def handler(op, address):
     while True:
@@ -20,7 +21,6 @@ def handler(op, address):
 
         print('')
 
-print(f'Starting up on {SERVER_ADDRESS[0]}, port {SERVER_ADDRESS[1]}')
 SOCKET.bind(SERVER_ADDRESS)
 print('Now listening...\n')
 

@@ -5,6 +5,7 @@ BUFFERSIZE = 4096
 EOF = b' /EOF/ \r\n/'
 
 def list(socket, server_address, op):
+    """ Enlists all files in the server_files directory """
     print('Listing files...')
     socket.sendto(op.encode(), server_address)
     data, address = socket.recvfrom(BUFFERSIZE)
@@ -16,6 +17,7 @@ def list(socket, server_address, op):
         print(data.decode())
 
 def get(socket, server_address, op):
+    """ Gets a file from the server """
     socket.sendto(op.encode(), server_address)
     data, address = socket.recvfrom(BUFFERSIZE)
     file_check = data.decode()
@@ -34,6 +36,7 @@ def get(socket, server_address, op):
                 f.write(data)
 
 def put(socket, server_address, op):
+    """ Sends a file to the server """
     socket.sendto(op.encode(), server_address)
     file_name = op.split()[1]
     if os.path.exists('./client_files/' + file_name):
@@ -51,6 +54,7 @@ def put(socket, server_address, op):
         print('File not found')
     
 def end_process(socket, server_address, op):
+    """ Ends the client process """
     socket.sendto(op.encode(), server_address)
     socket.close()
     print('Exiting...')
