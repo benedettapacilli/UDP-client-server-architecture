@@ -28,7 +28,7 @@ This project is a UDP server and client that can be used to send and receive mes
 This project is licensed under the MIT license.
 
 ## Authors
-* [@benedettapacilli](Benedetta Pacilli)
+* [@benedettapacilli](https://github.com/benedettapacilli)
 
 ## Contacts
 * [@benedetta.pacilli](https://instagram.com/benedetta.pacilli)
