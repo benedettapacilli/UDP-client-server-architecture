@@ -10,20 +10,25 @@ This project is a UDP server and client that can be used to send and receive mes
 ## Installation
 * Install Python 3.6
 
-    $ python3 -m pip install --upgrade pip
-    $ pip install -r requirements.txt
+```
+python3 -m pip install --upgrade pip
+```
+```
+pip install -r requirements.txt
+```
 
 ## Usage
 * Run the server:
+```
+python3 server.py
+```
 
-    $ python3 server.py
-
-    # or 
+ ### or 
     
 * Run the client:
-
-    $ python3 client.py
-
+```
+python3 client.py
+```
 ## License
 This project is licensed under the MIT license.
 
