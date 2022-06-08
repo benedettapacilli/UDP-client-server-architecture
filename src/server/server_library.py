@@ -24,7 +24,7 @@ def send(socket, server_address, op):
                     f.close()
                     break
                 socket.sendto(data, server_address)
-        print('File sent')
+        print('\nFile sent')
     else:
         socket.sendto('no'.encode(), server_address)
 
@@ -38,10 +38,10 @@ def receive(socket, op):
                 f.close()
                 break
             f.write(data)
-    print('File received')
+    print('\nFile received')
 
 def end_process(socket):
     """ Ends the server process """
     socket.close()
-    print('Exiting...')
+    print('\nExiting...')
     exit()

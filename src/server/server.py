@@ -9,6 +9,7 @@ SERVER_ADDRESS = ('localhost', 10000)
 print(f'Starting up on {SERVER_ADDRESS[0]}, port {SERVER_ADDRESS[1]}')
 
 def handler(op, address):
+    """ Handles the client request """
     if op == 'list':
         sl.list(SOCKET, address, op)
     elif op.startswith('get'):

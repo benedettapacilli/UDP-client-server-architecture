@@ -16,9 +16,9 @@ while True:
     elif op == 'exit':
         cl.end_process(socket, server_address, op)
     elif op == 'help':
-        print('list: list files\nget <file_name>: download file\nput <file_name>: upload file\nexit: exit the program')
+        print('\nlist: list files\nget <file_name>: download file\nput <file_name>: upload file\nexit: exit the program')
     else:
-        print('Invalid operation')
+        print('\nInvalid operation')
 
     print('')
     
