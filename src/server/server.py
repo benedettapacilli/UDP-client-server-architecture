@@ -9,17 +9,16 @@ SERVER_ADDRESS = ('localhost', 10000)
 print(f'Starting up on {SERVER_ADDRESS[0]}, port {SERVER_ADDRESS[1]}')
 
 def handler(op, address):
-    while True:
-        if op == 'list':
-            sl.list(SOCKET, address, op)
-        elif op.startswith('get'):
-            sl.send(SOCKET, address, op)
-        elif op.startswith('put'):
-            sl.receive(SOCKET, op)
-        elif op == 'exit':
-            sl.end_process(SOCKET)
+    if op == 'list':
+        sl.list(SOCKET, address, op)
+    elif op.startswith('get'):
+        sl.send(SOCKET, address, op)
+    elif op.startswith('put'):
+        sl.receive(SOCKET, op)
+    elif op == 'exit':
+        sl.end_process(SOCKET)
 
-        print('')
+    print('')
 
 SOCKET.bind(SERVER_ADDRESS)
 print('Now listening...\n')
