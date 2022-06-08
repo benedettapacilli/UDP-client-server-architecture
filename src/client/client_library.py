@@ -1,11 +1,9 @@
 import socket 
 import os
 
-from zmq import CLIENT
-
 BUFFERSIZE = 4096
 EOF = b' /EOF/ \r\n/'
-CLIENT_FILES = './client_files'
+CLIENT_FILES = './client_files/'
 
 def list(socket, server_address, op):
     """ Enlists all files in the server_files directory """
@@ -40,9 +38,9 @@ def get(socket, server_address, op):
 
 def put(socket, server_address, op):
     """ Sends a file to the server """
-    socket.sendto(op.encode(), server_address)
     file_name = op.split()[1]
     if os.path.exists(CLIENT_FILES + file_name):
+        socket.sendto(op.encode(), server_address)
         print('\nFile found, uploading...')
         with open(CLIENT_FILES + file_name, 'rb') as f:
             while True:

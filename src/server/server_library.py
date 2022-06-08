@@ -15,9 +15,9 @@ def list(socket, server_address, op):
 def send(socket, server_address, op):
     """ Sends a file to the client """
     file_name = op.split()[1]
-    if os.path.exists(SERVER_FILES + file_name):
+    if os.path.exists(SERVER_FILES + '/' + file_name):
         socket.sendto('yes'.encode(), server_address)
-        with open(SERVER_FILES + file_name, 'rb') as f:
+        with open(SERVER_FILES + '/' + file_name, 'rb') as f:
             while True:
                 data = f.read(BUFFERSIZE)
                 if not data:
@@ -32,7 +32,7 @@ def send(socket, server_address, op):
 def receive(socket, op):
     """ Receives a file from the client """
     file_name = op.split()[1]
-    with open(SERVER_FILES + file_name, 'wb') as f:
+    with open(SERVER_FILES + '/' + file_name, 'wb') as f:
         while True:
             data, addr = socket.recvfrom(BUFFERSIZE)
             if data == EOF:
