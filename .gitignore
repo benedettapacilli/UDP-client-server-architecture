@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 # Obsidian
-../.obsidian/
+./.obsidian/
