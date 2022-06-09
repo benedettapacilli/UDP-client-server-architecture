@@ -27,6 +27,8 @@ def get(socket, server_address, op):
     else:
         file_name = op.split()[1]
         print('\nFile found, downloading...')
+        if not os.path.isdir(CLIENT_FILES):
+            os.mkdir(CLIENT_FILES)
         with open(CLIENT_FILES + file_name, 'wb') as f:
             while True:
                 data, address = socket.recvfrom(BUFFERSIZE)

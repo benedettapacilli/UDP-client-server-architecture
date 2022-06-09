@@ -7,6 +7,8 @@ SERVER_FILES = './server_files'
 
 def list(socket, server_address, op):
     """ Enlists all files in the server_files directory """
+    if not os.path.isdir(SERVER_FILES):
+        os.mkdir(SERVER_FILES)
     file_list = os.listdir(SERVER_FILES)
     socket.sendto(str(len(file_list)).encode(), server_address)
     for file in file_list:
@@ -31,6 +33,8 @@ def send(socket, server_address, op):
 
 def receive(socket, op):
     """ Receives a file from the client """
+    if not os.path.isdir(SERVER_FILES):
+            os.mkdir(SERVER_FILES)
     file_name = op.split()[1]
     with open(SERVER_FILES + '/' + file_name, 'wb') as f:
         while True:
