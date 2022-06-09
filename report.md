@@ -37,3 +37,6 @@ Contiene le seguenti funzioni:
 	
 ### client.py
 Ad inizio script viene creato il socket e vengono impostati *localhost* e *10000*, rispettivamente come indirizzo IP e porta, per creare il server address. 
+Viene poi chiesto di inserire un operazione, per sapere quali sono le operazioni disponibili basta usare il comando **help**. Per ogni operazione inserita che non rientra tra quelle valide viene mostrato un messaggio di errore.
+Per ogni operazione valida scelta viene chiamata una funzione di **client_library**, importata in client.py
+
