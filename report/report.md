@@ -70,12 +70,22 @@ Contiene le seguenti funzioni:
 + **put:**
 	Prende la seconda parola del'operazione e la salva come nome del file da inviare al server.
 	Se il file è presente in *client_files*: viene mandata l'operazione richiesta al server, viene aperto il file (specificano nell'operazione) in modalità di lettura e viene inviato a pacchetti di dimensioni della costante *BUFFERSIZE*.  Una volta finito di inviare il file, come ultima cosa, viene inviata la costante EOF.  
+	Se invece il file non è presente viene mostrato un messaggio che avvisa il client.
 	In questo modo, se quel file scelto dal client esiste già in *server_files* , questo viene sovrascritto.
 + **end_process:**
 	Quando un client sceglie la funzione *exit* sia il socket che il processo del client vengono chiusi.
 	
-<br>
 
 La seguente immagine mostra come il server e i client comunicano.
 ![client-server-communication](report/resources/udp-client-server.png)
+
+<br>
+
+## Uso dei thread
+In server viene importato *threading*.
+Per ogni client che fa una richiesta al server viene creato un nuovo *thread* (come target del thread viene specificata la funzione handler, definita in server.py e come args vengono passati l'operazione richiesta e il server address), successivamente si fa iniziare il thread e si fa il *join*. Ogni thread chiamato viene bloccato e deve aspettare che termini il precedente thread il cui join è stato chiamato.
+Questo fa in modo che non vi siano letture/scritture contemporanee su file da parte di diversi client.
+La funzione *handler* serve a gestire l'operazione per la quale è stato creato il thread. Solo l'operazione exit non viene gestita nell'handler. ma direttamente nel loop principale del server. Infatti, in caso l'operazione sia *exit*, non viene creato alcun thread ma si chiama direttamente l'apposita funzione *end_process* che si trova in *server_library.py*.
+
+
 
