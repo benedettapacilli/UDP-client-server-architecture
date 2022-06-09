@@ -25,6 +25,8 @@ Per eseguire un client basta andare in src e poi in client ed eseguire il comand
 python3 client.py
 ```
 
+Tutti i file che vengono scambiati tra server e client vengono salvati nelle apposite cartelle *server_files* e *client_files*. Quando queste due cartelle non esistono e sono necessarie per il completamento di un'operazione vengono automaticamente create.
+
 <div style="page-break-after: always;"></div>
 
 ## Descrizione
