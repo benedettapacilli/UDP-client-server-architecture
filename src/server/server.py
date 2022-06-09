@@ -16,8 +16,6 @@ def handler(op, address):
         sl.send(SOCKET, address, op)
     elif op.startswith('put'):
         sl.receive(SOCKET, op)
-    elif op == 'exit':
-        sl.end_process(SOCKET)
 
     print('')
 
@@ -30,6 +28,10 @@ while True:
 
     print(f"Received {len(data)} bytes from {address}")
     op = data.decode('utf8')
+
+    if op == 'exit':
+        sl.end_process(SOCKET)
+        break
 
     thread = threading.Thread(target=handler, args=(op, address))
     thread.start()
