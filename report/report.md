@@ -26,7 +26,7 @@ Ogni richiesta di client viene gestita tramite la funzione *handler*: la funzion
 File python usato come libreria per il Server. 
 Contiene le seguenti funzioni:
 + **list :**
-	Viene creata una lista di stringhe contenente i nomi dei file nell'apposita cartelle *server_files* (qui vengono salvati i file che arrivano da client o che devono essere inviati).
+	Viene creata una lista di stringhe contenente i nomi dei file dell'apposita cartelle *server_files* (qui vengono salvati i file che arrivano da client o che devono essere inviati).
 	Come prima cosa viene inviato il numero di file presenti poi, ogni nome di file presente in questa lista viene inviato al client. 
 + **send :**
 	Se un client richiede l'operazione *get \<fileName>*  il server utilizza la funzione *send* alla quale vengono passati il socket, l'address del server e l'operazione richiesta. Viene presa l'operazione, composta di due parole e con una split, si prende il secondo termine, rappresentante il nome del file richiesto. Se è presente in *server_files*, il file  viene aperto in modalità di lettura e viene inviato a pacchetti di dimensioni della costante *BUFFERSIZE*.  Una volta finito di inviare il file, come ultima cosa, viene inviata la costante EOF.  
