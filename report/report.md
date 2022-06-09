@@ -57,3 +57,9 @@ Contiene le seguenti funzioni:
 	In questo modo, se quel file scelto dal client esiste già in *server_files* , questo viene sovrascritto.
 + **end_process:**
 	Quando un client sceglie la funzione *exit* sia il socket che il processo del client vengono chiusi.
+	
+<br>
+
+La seguente immagine mostra come il server e i client comunicano.
+![client-server-communication](report/resources/udp-client-server.png)
+
