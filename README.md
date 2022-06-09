@@ -2,7 +2,7 @@
 A project made for the "Network Systems" course of my university
 
 ## Description
-This project is a UDP server and client that can be used to send and receive messages.
+This project is a UDP server and client that can be used to send and receive messages and files.
 
 ## Requirements
 * Python 3.6
