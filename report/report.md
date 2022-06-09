@@ -5,10 +5,26 @@
 <br><br>
 <h1 style="text-align: center">Architettura server client UDP</h1>
 <br><br>
-<h4 style="text-align: center">Benedetta Pacilli :   0000975296</h4>
+<h4 style="text-align: center">Benedetta Pacilli</h4>
+<h4 style="text-align: center">Matricola :   0000975296</h4>
+<h4 style="text-align: center">Email: benedetta.pacilli@studio.unibo.it</h4>
 </div>
 
-	
+<br>
+
+## Utilizzo
+Per poter utilizzare le varie componenti del progetto è necessario aver installato Python, più precisamente una versione che sia uguale o superiore a Python 3.6.
+Dopo di che basta clonare il repository https://github.com/benedettapacilli/UDP-client-server-architecture e andare da terminale nella cartella in cui è stato fatto il cloning. 
+Si apra una nuova scheda di terminale per ogni nuova componente che si vuole eseguire (ad esempio tre schede per avere il server e due client). 
+Per eseguire il server basta andare in src e poi in server ed eseguire il comando:
+```
+python3 server.py
+```
+Per eseguire un client basta andare in src e poi in client ed eseguire il comando:
+```
+python3 client.py
+```
+
 ## Descrizione
 L'elaborato si compone di due script principali: 
 - **server.py**
