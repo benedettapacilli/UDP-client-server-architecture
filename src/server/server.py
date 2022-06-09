@@ -31,7 +31,6 @@ while True:
 
     if op == 'exit':
         sl.end_process(SOCKET)
-        break
 
     thread = threading.Thread(target=handler, args=(op, address))
     thread.start()
