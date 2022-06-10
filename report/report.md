@@ -87,8 +87,8 @@ La seguente immagine mostra come il server e i client comunicano.
 
 ## Uso dei thread
 In server viene importato *threading*.
-Per ogni client che fa una richiesta al server viene creato un nuovo *thread* (come target del thread viene specificata la funzione handler, definita in server.py e come args vengono passati l'operazione richiesta e il server address), successivamente si fa iniziare il thread e si fa il *join*. Ogni thread chiamato viene bloccato e deve aspettare che termini il precedente thread il cui join è stato chiamato.
-Questo fa in modo che non vi siano letture/scritture contemporanee su file da parte di diversi client.
+Per ogni client che fa una richiesta al server viene creato un nuovo *thread* (come target del thread viene specificata la funzione handler, definita in server.py e come args vengono passati l'operazione richiesta e il server address), successivamente si fa iniziare il thread e si fa il *join*. 
+La join blocca il thread principale, così da evitare che le operazioni di altri client interferiscano con l'operazione in corso.
 La funzione *handler* serve a gestire l'operazione per la quale è stato creato il thread. Solo l'operazione exit non viene gestita nell'handler. Ma direttamente nel loop principale del server. Infatti, in caso l'operazione sia *exit*, non viene creato alcun thread ma si chiama direttamente l'apposita funzione *end_process* che si trova in *server_library.py*. 
 
 
